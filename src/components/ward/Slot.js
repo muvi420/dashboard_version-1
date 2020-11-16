@@ -7,38 +7,60 @@ import moment from 'moment';
 // Style
 import './Slot.scss';
 
-const Slot = ({ name, sensorGroupID, type, lastDisinfection, sensorGroup }) => {
+const Slot = ({ name, disinfectionFreq, sensorGroupID, type, lastDisinfection, sensorGroup }) => {
   const [sensor, setSensor] = useState([]);
   const [lastActivatedTime, setLastActivatedTime] = useState([]);
   const [nextActivatedTime, setNextActivatedTime] = useState([]);
-  const [timeDiff, setTimeDiff] = useState();
+  const [displayColor, setDisplayColor] = useState();
+  const [disinfectionStatus, setDisinfectionStatus] = useState();
 
 
-  // console.log("today", moment("2020-11-09 9:00").format('LLL'));
-  // console.log("test",moment('2020-11-09 9:00').add(24, 'hours').format('LLL'));
+  const a = moment("2020-11-09 9:00");
+  const b = moment('2020-11-0 0:00 AM').add(24, 'hours');
+  const c = moment();
+  // console.log("today", a);
+  // console.log("tomorrow", b); 
+  // console.log("c", c);
+  // console.log(c.diff(b, "hours"));
+  
 
   useEffect(() => {
     // Filter corresponding rooms/equipment of a specific floor
     if (sensorGroup) {
-      console.log("sensorGroup", sensorGroup);
 
       const temp = sensorGroup.filter((e) => e.sensorGroupID === sensorGroupID);
 
       if (temp.length) {
         setSensor(temp);
         setLastActivatedTime(moment(temp[0].lastActivatedStartTime).format('LLL'));
-        setNextActivatedTime(moment(temp[0].lastActivatedStartTime).add(24, 'hours').format('LLL'));
+        setNextActivatedTime(moment(temp[0].lastActivatedStartTime).add(disinfectionFreq, 'hours').format('LLL'));
       }
     }
   }, [sensorGroup]);
 
+  // console.log('nextnext', nextActivatedTime);
   useEffect(() => {
+    const current = moment();
+    const diff = current.diff(nextActivatedTime, "hours");
+    if ( diff < 0) {
+      setDisplayColor('yellow');
+      setDisinfectionStatus('Wainting for disinfection...');
+    } else if (diff === 0) {
+      setDisplayColor('green');
+      setDisinfectionStatus('Disinfected.');
+    } else if (diff > 0 && diff <= 3) {
+      setDisplayColor('orange');
+      setDisinfectionStatus('Alert! Please disinfect ASAP!');
+    } else {
+      setDisplayColor('red');
+      setDisinfectionStatus(`Overdue about ${diff} hours!!`);
+    }
     // if(nextActivatedTime)
   },[lastActivatedTime, nextActivatedTime])
 
   return (
     <div className="slot-card">
-      <div className="card-container">
+      <div className={`card-container ${displayColor}`}>
         <div className="slot-name">
           <h3>{name}</h3>
         </div>
@@ -62,8 +84,8 @@ const Slot = ({ name, sensorGroupID, type, lastDisinfection, sensorGroup }) => {
           </div>
           
         </div>
-        <div className="slot-image">
-          {/* <img src={ventilation} alt="image"/> */}
+        <div className="disinfection-status">
+          {disinfectionStatus}
         </div>
       </div>
     </div>

@@ -104,7 +104,7 @@ const WardComponent = () => {
   // Header of tab
   const tabList = [
     "Room",
-    "Equimpent"
+    "Equipment"
   ];
 
   const [tab, setTab] = useState("Room");
@@ -117,12 +117,13 @@ const WardComponent = () => {
 
   // Set corresponding data when clicking different tab button
   useEffect(() => {
+    console.log(tab);
     if (tab === "Room") {
       setRoomDisplay(true);
       setEquipmentDisplay(false);
       setActiveFloors(roomFloors);
       setActiveList(roomList);
-    } else if (tab === "Equimpent") {
+    } else if (tab === "Equipment") {
       setEquipmentDisplay(true);
       setRoomDisplay(false);
       setActiveFloors(equipmentFloors);

@@ -11,7 +11,7 @@ const MainContent = ({ activeFloors, activeList, sensorGroup }) => {
     <div className="main_content">
       {activeFloors && activeFloors.map((e) => {
         return (
-          <Floor level={e} allSlots={activeList} sensorGroup={sensorGroup} />
+          <Floor key={e} level={e} allSlots={activeList} sensorGroup={sensorGroup} />
         )
       })}
     </div>

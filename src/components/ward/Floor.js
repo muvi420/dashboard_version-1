@@ -15,7 +15,7 @@ const Floor = ({ level, allSlots, sensorGroup }) => {
       const temp = allSlots.filter((e) => e.address.floorNumber === level)
       setSlots(temp);
     }
-  }, [allSlots]);
+  }, [allSlots, level]);
 
   return (
     <div className="floor">
@@ -27,7 +27,12 @@ const Floor = ({ level, allSlots, sensorGroup }) => {
           <div className="single_slot">
             {slots.map((slot) => {
               return (
-                <Slot name={slot.entityName} sensorGroupID={slot.sensorGroupID} sensorGroup={sensorGroup} />
+                <Slot
+                  key={slot.entityName}
+                  name={slot.entityName}
+                  disinfectionFreq={slot.disinfectionFreq}
+                  sensorGroupID={slot.sensorGroupID}
+                  sensorGroup={sensorGroup} />
               );
             })}
           </div>

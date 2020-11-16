@@ -50,19 +50,23 @@
       }
     }
 
+    .disinfection-status{
+      width: 100%;
+      color: White;
+    }
 
+    &.yellow{
+      background-color: #e9e91f;
+    }
 
-
-    .slot-image{
-      width: 50px;
-      height: 50px;
-      padding: 5px 0;
-      margin-top: 5px;
-
-      img{
-        width: 100%;
-        height: 100%;
-      }
+    &.green{
+      background-color: rgb(29, 163, 29);
+    }
+    &.orange{
+      background-color: rgb(224, 132, 13);
+    }
+    &.red{
+      background-color: rgb(224, 22, 22);
     }
   }
 }
