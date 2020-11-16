@@ -1,0 +1,14 @@
+.modal {
+  position: fixed;
+  right: 3rem;
+  top: 4rem;
+  width: 10rem;
+  height: 5rem;
+  border: 2px solid red;
+  z-index: 99;
+  display: none;
+
+  &.open {
+    display: block;
+  }
+}

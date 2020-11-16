@@ -1,0 +1,44 @@
+$font-size-xlg:20px;
+$font-size-lg:16px;
+$font-size-md:14px;
+$font-size-sm:13px;
+$font-size-xs:12px;
+$font-size-xxs:11px;
+$font-weight-bold:700;
+
+$color-black: #000000;
+$color-white: #ffffff;
+$color-primary:#db4b39;
+// $color-secondary:#fafafa;
+// $color-tertiary:#777;
+
+$text-color-secondary:#333;
+// $text-color-tertiary:#202020;
+
+$background-color-primary:#f3f3f3;
+$background-color-secondary:#ccc;
+
+$card-bg-color: rgba(67, 230, 140, 0.6);
+$border-radius: 3px;
+$border-color:#f1f1f1;
+
+
+*, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button{
+  border: none;
+  outline:none;
+  background-color: inherit;
+  padding: 0;
+  margin: 0;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+a{
+  text-decoration: none;
+}
