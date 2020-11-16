@@ -1,0 +1,27 @@
+@import '../sass/variables.scss';
+
+.card{
+  padding: 15px;
+  .card-inner{
+    min-width: 0px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+    padding: 10px;
+    width: 250px;
+    cursor: pointer;
+    background-color: $color-white;
+    position: relative;
+    border-radius: 4px;
+    opacity: 0.6;
+    height: 200px;
+  
+  }
+  // margin: 30px 40px 30px 0px;
+ 
+  button{
+   
+  }
+  .clicked{
+    background-color: green;
+  }
+}
+

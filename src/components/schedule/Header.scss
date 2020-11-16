@@ -1,0 +1,27 @@
+.schedule_tab{
+  margin: 0 0 10px;
+  padding: 0;
+  .schedule_tab_container{
+    border-bottom: 2px solid #ff967e;
+
+    .tab_wrapper{
+      list-style: none;
+      display: flex;
+
+      li{
+        padding: 6px 12px;
+      }
+      .tab_item{
+        border:0;
+    // border-bottom: 2px solid #ff967e;
+
+      }
+      .tab_item.tab_clicked{
+        border: 2px solid #ff967e;
+        border-bottom: 0;
+      }
+    }
+
+
+  }
+}

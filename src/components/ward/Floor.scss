@@ -1,0 +1,29 @@
+@import '../../sass/variables.scss';
+
+.floor{
+  .floor-container{
+    margin: 30px 0px 0px;
+    .floor-header{
+      height: 40px;
+      background: $background-color-primary;
+      padding: 10px;
+
+      h2{
+        line-height: 1.125;
+        font-weight: 900;
+        font-size: 22px;
+      }
+    }
+
+    .floor-content{
+      display: flex;
+      justify-content: space-between;
+
+      .single_slot{
+        display: flex;
+        width: 30%;
+
+      }
+    }
+  }
+}

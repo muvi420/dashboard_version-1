@@ -1,0 +1,13 @@
+@import '../../sass/variables.scss';
+
+.daily-notifaction{
+  .daily-container{
+    .notification-header{
+      margin: 20px 0px 0px;
+      min-width: 0px;
+      background:$background-color-primary;
+      height: 80px;
+      padding: 10px;
+    }
+  }
+}
