@@ -1,6 +1,6 @@
 // Libraries
 import React, {useState} from 'react';
-import events from './events';
+// import events from './events';
 import {Calendar, momentLocalizer, Views} from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';

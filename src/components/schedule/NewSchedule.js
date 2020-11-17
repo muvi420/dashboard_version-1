@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react';
-
+import axios from 'axios';
 // Components
 import DatePickerComponent from './DatePickerComponent';
 
 // Style
 import './NewSchedule.scss';
 import "react-datepicker/dist/react-datepicker.css";
+
+const apiPoint = 'https://e86gqbslqe.execute-api.ap-southeast-2.amazonaws.com/fake_api_stage1/schedule';
 
 const NewSchedule = (props) => {
   const [title, setTitle] = useState();
@@ -33,6 +35,33 @@ const NewSchedule = (props) => {
     event.preventDefault();
   }
 
+
+  async function postSchedule() {
+      try {
+        const res = await axios({
+          url: apiPoint,
+          method: 'post',
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            "Access-Control-Allow-Headers": "Content-Type",
+            "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+            "Content-Type": "application/json",
+          },
+          data: {
+            title,
+            target,
+            startTime,
+            endTime
+          }
+        });
+
+        console.log(res);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setAlertDisplay(false);
@@ -50,7 +79,7 @@ const NewSchedule = (props) => {
               <div className="row">
                 <input
                   type="text"
-                  value={title}
+                  value={title || ''}
                   onChange={(e) => setTitle(e.target.value)} />
               </div>
             </label>
@@ -59,7 +88,7 @@ const NewSchedule = (props) => {
               <div className="row">
                 <input
                   type="text"
-                  value={target}
+                  value={target || ''}
                   onChange={(e) => setTarget(e.target.value)} 
                 />
               </div>
@@ -86,14 +115,14 @@ const NewSchedule = (props) => {
                 />
               </div>
             </label>
-            {/* <label>
-              Status:
-              <div className="row">
-                <input type="text"  />
-              </div>
-            </label> */}
             <div className={`${alertDisplay ? "alert_show" : "alert_hide"}`}>Schedule Created!</div>
-              <input type="submit" value="Submit" className="submit" />
+            <button
+              type="button"
+              className="submit"
+              onClick={() => {postSchedule()}}
+            >
+              Submit
+            </button>
           </form>
         </div>
       </div>

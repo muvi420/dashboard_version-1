@@ -21,7 +21,7 @@ const NotificationComponent = () => {
         </div>
         <div className="content-inner">
           {notificationDate.map((e) => {
-            return(<DailyNotify currentDay={e.currentDay} date={e.date} />)
+            return (<DailyNotify key={e.currentDay} currentDay={e.currentDay} date={e.date} />)
 
           })}
         </div>

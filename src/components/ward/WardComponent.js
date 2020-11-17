@@ -117,7 +117,6 @@ const WardComponent = () => {
 
   // Set corresponding data when clicking different tab button
   useEffect(() => {
-    console.log(tab);
     if (tab === "Room") {
       setRoomDisplay(true);
       setEquipmentDisplay(false);

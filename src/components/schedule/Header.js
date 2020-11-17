@@ -13,7 +13,7 @@ const ScheduleComponent = (props) => {
         <ul className="tab_wrapper">
           {props.tabList && props.tabList.map((tab) => {
             return (
-              <li className={`tab_item ${props.selectedTab ===  tab ? 'tab_clicked' : ''}`}>
+              <li key={tab} className={`tab_item ${props.selectedTab ===  tab ? 'tab_clicked' : ''}`}>
                 <button
                   onClick={() => {
                     props.setTabDisplay(tab);

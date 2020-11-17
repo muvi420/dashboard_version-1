@@ -7,22 +7,12 @@ import moment from 'moment';
 // Style
 import './Slot.scss';
 
-const Slot = ({ name, disinfectionFreq, sensorGroupID, type, lastDisinfection, sensorGroup }) => {
+const Slot = ({ name, disinfectionFreq, sensorGroupID, lastDisinfection, sensorGroup }) => {
   const [sensor, setSensor] = useState([]);
   const [lastActivatedTime, setLastActivatedTime] = useState([]);
   const [nextActivatedTime, setNextActivatedTime] = useState([]);
   const [displayColor, setDisplayColor] = useState();
   const [disinfectionStatus, setDisinfectionStatus] = useState();
-
-
-  const a = moment("2020-11-09 9:00");
-  const b = moment('2020-11-0 0:00 AM').add(24, 'hours');
-  const c = moment();
-  // console.log("today", a);
-  // console.log("tomorrow", b); 
-  // console.log("c", c);
-  // console.log(c.diff(b, "hours"));
-  
 
   useEffect(() => {
     // Filter corresponding rooms/equipment of a specific floor
@@ -36,7 +26,7 @@ const Slot = ({ name, disinfectionFreq, sensorGroupID, type, lastDisinfection, s
         setNextActivatedTime(moment(temp[0].lastActivatedStartTime).add(disinfectionFreq, 'hours').format('LLL'));
       }
     }
-  }, [sensorGroup]);
+  }, [sensorGroup, sensorGroupID, disinfectionFreq]);
 
   // console.log('nextnext', nextActivatedTime);
   useEffect(() => {

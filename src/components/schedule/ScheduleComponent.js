@@ -77,7 +77,6 @@ const ScheduleComponent = () => {
               ? <NewSchedule
               setEventFunc={setEvent} />
               : null}
-            
           </div>
         </div>
       </div>
