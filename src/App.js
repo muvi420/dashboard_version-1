@@ -9,7 +9,6 @@ import {
 import NavBarComponent from './components/NavBarComponent';
 import Modal from './components/Modal';
 // pages
-import StatsPage from './pages/StatsPage';
 import DepartmentPage from './pages/DepartmentPage';
 import NotificationPage from './pages/NotificationPage';
 import SchedulePage from './pages/SchedulePage';
@@ -26,20 +25,14 @@ function App() {
         <NavBarComponent />
         {/* <Modal /> */}
         <Switch>
-          {/* <Route path="/stats">
-            <StatsPage />
-          </Route> */}
-          <Route path="/stats">
-            <DepartmentPage />
-          </Route>
-          {/* <Route path="/Emergency">
-            <DepartmentPage />
-          </Route> */}
           <Route path="/notification">
             <NotificationPage />
           </Route>
           <Route path="/schedule">
             <SchedulePage />
+          </Route>
+          <Route path="/stats">
+            <DepartmentPage />
           </Route>
         </Switch>
       </Router>

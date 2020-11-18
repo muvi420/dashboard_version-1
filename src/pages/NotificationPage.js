@@ -7,7 +7,7 @@ import NotificationComponent from '../components/notification/NotificationCompon
 
 const NotificationPage = () => {
   return (
-    <div className="notificationPage">
+    <div>
       <NotificationComponent />
     </div>
   )

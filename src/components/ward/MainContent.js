@@ -7,7 +7,7 @@ import Floor from './Floor';
 import './MainContent.scss';
 
 const MainContent = ({ type, activeFloors, activeList, sensorGroup }) => {
-  const EquipmentType = ['Ventilator', 'Wheelchair', 'PC Trolley'];
+  const EquipmentType = ['Ventilator', 'Wheelchair', 'IV Pole'];
 
   return (
     <div className="main_content">

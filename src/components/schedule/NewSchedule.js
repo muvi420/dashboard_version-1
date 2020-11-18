@@ -16,7 +16,6 @@ const NewSchedule = (props) => {
   const [endTime, setEndTime] = useState();
   const [alertDisplay, setAlertDisplay] = useState();
 
-
   const setStartTimeFunc = (startTime) => {
     setStartTime(startTime);
   }
@@ -34,7 +33,6 @@ const NewSchedule = (props) => {
     setEndTime(new Date());
     event.preventDefault();
   }
-
 
   async function postSchedule() {
       try {
@@ -55,12 +53,10 @@ const NewSchedule = (props) => {
           }
         });
 
-        console.log(res);
       } catch (error) {
         console.log(error);
       }
     }
-
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -73,7 +69,7 @@ const NewSchedule = (props) => {
     <div className="new_schedule">
       <div className="new_schedule_container">
         <div className="schedule_form">
-          <form className="form_wrapper" onSubmit={(event) => handleSubmit(event)}>
+          <form className="form_wrapper" >
             <label>
               Title:
               <div className="row">
@@ -119,7 +115,10 @@ const NewSchedule = (props) => {
             <button
               type="button"
               className="submit"
-              onClick={() => {postSchedule()}}
+              onClick={(event) => {
+                postSchedule();
+                handleSubmit(event);
+              }}
             >
               Submit
             </button>
@@ -129,7 +128,5 @@ const NewSchedule = (props) => {
     </div>
   )
 }
-
-
 
 export default NewSchedule;

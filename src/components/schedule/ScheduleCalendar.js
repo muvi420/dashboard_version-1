@@ -12,7 +12,6 @@ import './ScheduleCalendar.scss';
 const localizer = momentLocalizer(moment);
 
 const ScheduleCalendar = (props) => {
-
   const [calendarEvents, setCalendarEvents] = useState(props.calendarEvents);
 
   const [dayLayoutAlgorithm, setDayLayoutAlgorithm] = useState('no-overlap');

@@ -1,5 +1,4 @@
-
-.notification{
+.notification-wrapper{
   width: 100%;
   height: 100%;
   position: relative;
@@ -7,7 +6,7 @@
   .notification-container{
     width: 100%;
     height: 100%;
-    position: absolute;
+    // position: absolute;
     left: 50%;
     transform: translateX(-50%);
     margin: 30px 0px 0px 6%;

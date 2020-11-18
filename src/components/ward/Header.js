@@ -2,7 +2,6 @@ import React from 'react';
 
 // Components
 
-
 // Style
 import './Header.scss';
 

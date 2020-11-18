@@ -1,6 +1,7 @@
 import { set } from 'lodash';
 import React, { useEffect, useState } from 'react';
 import _ from 'lodash';
+import axios from 'axios';
 
 
 // Components
@@ -9,21 +10,16 @@ import Header from './Header';
 import ScheduleCalendar from './ScheduleCalendar';
 import NewSchedule from './NewSchedule';
 
-
 // Style
 import './ScheduleComponent.scss';
 
+const apiPoint = 'https://e86gqbslqe.execute-api.ap-southeast-2.amazonaws.com/fake_api_stage1/schedule';
+
 const ScheduleComponent = () => {
 
-  // const tabList = [
-  //   {tab: "Schedule List", clicked: true},
-  //   {tab: "Create New Schedule", clicked: false},
-  //   { tab: "Schedule Calendar", clicked: false }
-  // ];
   const [calendarEvents, setCalendarEvents] = useState(_.cloneDeep(events));
   
   const tabList = [
-    // "Schedule List", 
     "Create New Schedule",
     "Schedule Calendar"
   ];
@@ -41,6 +37,25 @@ const ScheduleComponent = () => {
   }
 
   useEffect(() => {
+    async function fetchAllSchedule() {
+      try {
+        const res = await axios({
+          url: apiPoint,
+          method: 'get',
+        });
+        setCalendarEvents(calendarEvents.concat(res.data.body));
+
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    fetchAllSchedule();
+  }, [])
+
+  console.log(calendarEvents);
+
+  useEffect(() => {
     if (tab === "Create New Schedule") {
       setNewSchedule(true);
       setScheduleCalendar(false);
@@ -56,7 +71,6 @@ const ScheduleComponent = () => {
     setStartTime(startTime);
     setEndTime(endTime);
     setCalendarEvents([...calendarEvents, {"title" : title, "start": startTime, "end": endTime}])
-
   }
 
   return (
@@ -68,8 +82,9 @@ const ScheduleComponent = () => {
         <div className="schedule_content">
           <div className="schedule_content_wrapper">
             {scheduleCalendar
-              ? <ScheduleCalendar tab={tab}
-              calendarEvents={calendarEvents}
+              ? <ScheduleCalendar
+                tab={tab}
+                calendarEvents={calendarEvents}
               />
               : null}
             
